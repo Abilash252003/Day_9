@@ -1,0 +1,37 @@
+///100 days of RTL///
+
+//Abilash//
+
+//2Bit  Multiplier//
+
+module bit2_multiplier_tb();
+
+reg  [1:0]a_in, b_in;
+wire [3:0]out;
+
+bit2_multiplier DUT(.a_in(a_in), .b_in(b_in), .out(out));
+
+integer i;
+
+initial
+begin
+ a_in = 2'b10;
+ for(i=0; i<4; i=i+1)
+  begin
+     b_in = i;
+     #20;
+     $display("Input A = %b----Input B = %b----Output out = %b",a_in,b_in,out);
+  end  
+  
+  $display("-------------------------------------------------------------------");
+
+  b_in = 2'b11;
+  for(i=0; i<4; i=i+1)
+  begin
+     a_in = i;
+     #20;
+     $display("Input A = %b----Input B = %b----Output out = %b",a_in,b_in,out);
+  end
+end
+
+endmodule
