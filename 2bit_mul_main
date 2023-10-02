@@ -1,0 +1,26 @@
+///100 days of RTL///
+
+//Abilash//
+
+//2Bit  Multiplier//
+
+module bit2_multiplier(a_in, b_in, out);
+
+input  [1:0]a_in,b_in;
+output [3:0]out;
+
+wire y0,y1,y2,y3;
+wire c;
+
+assign y0 = (a_in[0] & b_in[0]);
+assign y1 = (a_in[1] & b_in[0]);
+assign y2 = (a_in[0] & b_in[1]);
+assign y3 = (a_in[1] & b_in[1]);
+
+assign out[0] = y0;
+
+half_adder HA1 (.a_in(y1), .b_in(y2), .sum(out[1]), .carry(c));
+half_adder HA2 (.a_in(y3), .b_in(c),  .sum(out[2]), .carry(out[3]));
+
+endmodule
+
